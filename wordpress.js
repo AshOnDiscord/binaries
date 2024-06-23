@@ -1,7 +1,22 @@
 const mapElement = document.createElement("div");
+const hideMap = () => {
+mapElement.style.display = "none";
+mapElement.style.opacity = "0";
+};
+const showMap = () => {
+mapElement.style.display = "block";
+mapElement.style.opacity = "1";
+};
 mapElement.id = "map";
 mapElement.style.width = "100vw";
 mapElement.style.height = "50vh";
+mapElement.style.position = "fixed";
+mapElement.style.top = "0";
+mapElement.style.left = "0";
+mapElement.style.zIndex = "1000";
+hideMap();
+mapElement.style.animation = "fade-in-out 0.5s";
+
 document.body.appendChild(mapElement)
 
 const markerClick = async (e) => {
