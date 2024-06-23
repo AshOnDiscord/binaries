@@ -14,7 +14,7 @@ mapElement.style.position = "fixed";
 mapElement.style.top = "0";
 mapElement.style.left = "0";
 mapElement.style.zIndex = "1000";
-hideMap();
+// hideMap();
 mapElement.style.animation = "fade-in-out 0.5s";
 
 document.body.appendChild(mapElement)
