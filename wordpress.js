@@ -14,7 +14,6 @@ mapElement.style.position = "fixed";
 mapElement.style.top = "0";
 mapElement.style.left = "0";
 mapElement.style.zIndex = "1000";
-// hideMap();
 mapElement.style.animation = "fade-in-out 0.5s";
 
 document.body.appendChild(mapElement)
@@ -60,3 +59,5 @@ document.querySelectorAll("[data-map-count]").forEach((element) => {
   }).addTo(map);
   marker.addEventListener("click", markerClick);
 });
+
+hideMap();
