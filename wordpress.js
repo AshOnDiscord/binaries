@@ -156,7 +156,20 @@ const updateScrollMargin = () => {
   })
 }
 
-window.addEventListener("resize", updateScrollMargin);
+const updateMapVisibility = () => {
+  const preBottom = document.getElementById("preSpots").getBoundingClientRect().bottom;
+  if (preBottom < 0) {
+    showMap()
+  } else {
+    hideMap()
+  }
+}
+
+window.addEventListener("resize", () => {
+  updateScrollMargin();
+  updateMapVisibility();
+});
 updateScrollMargin()
+updateMapVisibility();
 
 hideMap();
