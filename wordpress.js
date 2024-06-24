@@ -1,5 +1,12 @@
 const mapElement = document.createElement("div");
 mapElement.id = "map";
+mapElement.style.width = "100vw";
+mapElement.style.height = "50vh";
+mapElement.style.position = "fixed";
+mapElement.style.top = "0";
+mapElement.style.left = "0";
+mapElement.style.zIndex = "1000";
+document.body.appendChild(mapElement);
 const map = leaflet.map("map").setView({ lat: 40.72438, lng: -74.305332 }, 18);
 const hideMap = () => {
   // mapElement.style.display = "none";
@@ -23,17 +30,9 @@ const updateMapVisibility = () => {
     hideMap()
   }
 }
-mapElement.style.width = "100vw";
-mapElement.style.height = "50vh";
-mapElement.style.position = "fixed";
-mapElement.style.top = "0";
-mapElement.style.left = "0";
-mapElement.style.zIndex = "1000";
 updateMapVisibility();
 mapElement.style.transition = "opacity 0.5s ease-in-out";
 mapElement.style.willChange = "opacity"
-
-document.body.appendChild(mapElement);
 
 const markerClick = async (e) => {
   console.log(`Marker ${e.target.options.name} clicked`, e);
