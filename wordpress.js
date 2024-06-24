@@ -43,6 +43,7 @@ map.addEventListener("click", (e) => {
   console.log(e.latlng);
 });
 
+
 document.querySelectorAll("[data-map-count]").forEach((element) => {
   const lat = parseFloat(element.getAttribute("data-map-lat"));
   const lng = parseFloat(element.getAttribute("data-map-lng"));
@@ -71,7 +72,18 @@ document.querySelectorAll("[data-map-count]").forEach((element) => {
 
 let currentMarker = "";
 
+const updateMapVisibility = () => {
+  const preBottom = document.getElementById("preSpots").getBoundingClientRect().bottom;
+  if (preBottom < 0) {
+    showMap()
+  } else {
+    hideMap()
+  }
+}
+updateMapVisibility();
 document.body.addEventListener("scroll", (e) => {
+  updateMapVisibility();
+  
   const mapHeight = document.querySelector("#map").clientHeight;
 
   const percentages = [...document.querySelectorAll("[data-map-count]")].map(
@@ -130,14 +142,19 @@ document.body.addEventListener("scroll", (e) => {
       const marker = document.querySelector(`#${largestElement.id}`);
 
       const htmlElement = document.getElementById(largestElement.id);
-      const lat = parseFloat(htmlElement.getAttribute("data-map-lat"));
-      const lng = parseFloat(htmlElement.getAttribute("data-map-lng"));
+      const lat = +htmlElement.getAttribute("data-map-lat");
+      const lng = +htmlElement.getAttribute("data-map-lng");
 
+      try {
       map.flyTo({ lat, lng }, 19, {
         animate: true,
         duration: 0.25,
         easeLinearity: 0.5,
       });
+      } catch (e) {
+        console.error(e)
+        console.error(lat, lng, htmlElement.getAttribute("data-map-lat"), htmlElement.getAttribute("data-map-lng"))
+      }
       document
         .getElementById(`${currentMarker}MarkerIcon`)
         ?.classList.remove("markerIconActive");
@@ -156,20 +173,9 @@ const updateScrollMargin = () => {
   })
 }
 
-const updateMapVisibility = () => {
-  const preBottom = document.getElementById("preSpots").getBoundingClientRect().bottom;
-  if (preBottom < 0) {
-    showMap()
-  } else {
-    hideMap()
-  }
-}
-
 window.addEventListener("resize", () => {
   updateScrollMargin();
-  updateMapVisibility();
 });
 updateScrollMargin()
-updateMapVisibility();
 
 hideMap();
