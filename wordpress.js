@@ -20,7 +20,8 @@ mapElement.style.position = "fixed";
 mapElement.style.top = "0";
 mapElement.style.left = "0";
 mapElement.style.zIndex = "1000";
-mapElement.style.animation = "fade-in-out 0.5s";
+mapElement.style.transition = "opacity 0.5s ease-in-out";
+mapElement.style.willChange = "opacity"
 
 document.body.appendChild(mapElement);
 
