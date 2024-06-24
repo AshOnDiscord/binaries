@@ -1,4 +1,6 @@
 const mapElement = document.createElement("div");
+mapElement.id = "map";
+const map = leaflet.map("map").setView({ lat: 40.72438, lng: -74.305332 }, 18);
 const hideMap = () => {
   // mapElement.style.display = "none";
   mapElement.style.opacity = "0";
@@ -6,8 +8,6 @@ const hideMap = () => {
   mapElement.tabIndex = "-1"
   map.invalidateSize()
 };
-const map = leaflet.map("map").setView({ lat: 40.72438, lng: -74.305332 }, 18);
-hideMap()
 const showMap = () => {
   // mapElement.style.display = "block";
   mapElement.style.opacity = "1";
@@ -15,13 +15,21 @@ const showMap = () => {
   mapElement.tabIndex = ""
   map.invalidateSize()
 };
-mapElement.id = "map";
+const updateMapVisibility = () => {
+  const preBottom = document.getElementById("preSpots").getBoundingClientRect().bottom;
+  if (preBottom < 0) {
+    showMap()
+  } else {
+    hideMap()
+  }
+}
 mapElement.style.width = "100vw";
 mapElement.style.height = "50vh";
 mapElement.style.position = "fixed";
 mapElement.style.top = "0";
 mapElement.style.left = "0";
 mapElement.style.zIndex = "1000";
+updateMapVisibility();
 mapElement.style.transition = "opacity 0.5s ease-in-out";
 mapElement.style.willChange = "opacity"
 
@@ -76,16 +84,6 @@ document.querySelectorAll("[data-map-count]").forEach((element) => {
 });
 
 let currentMarker = "";
-
-const updateMapVisibility = () => {
-  const preBottom = document.getElementById("preSpots").getBoundingClientRect().bottom;
-  if (preBottom < 0) {
-    showMap()
-  } else {
-    hideMap()
-  }
-}
-updateMapVisibility();
 document.body.addEventListener("scroll", (e) => {
   updateMapVisibility();
   
