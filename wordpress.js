@@ -67,7 +67,7 @@ document.querySelectorAll("[data-map-count]").forEach((element) => {
   marker.addEventListener("click", markerClick);
 });
 
-document.addEventListener("scroll", (e) => {
+document.body.addEventListener("scroll", (e) => {
   const mapHeight = document.querySelector("#map").clientHeight;
 
   const percentages = [...document.querySelectorAll(".markerBox")].map(
