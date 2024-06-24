@@ -4,15 +4,16 @@ const hideMap = () => {
   mapElement.style.opacity = "0";
   mapElement.style.pointerEvents = "none";
   mapElement.tabIndex = "-1"
-  map?.invalidateSize()
+  map.invalidateSize()
 };
+const map = leaflet.map("map").setView({ lat: 40.72438, lng: -74.305332 }, 18);
 hideMap()
 const showMap = () => {
   // mapElement.style.display = "block";
   mapElement.style.opacity = "1";
   mapElement.style.pointerEvents = "";
   mapElement.tabIndex = ""
-  map?.invalidateSize()
+  map.invalidateSize()
 };
 mapElement.id = "map";
 mapElement.style.width = "100vw";
@@ -33,8 +34,6 @@ const markerClick = async (e) => {
     .querySelector(`#${e.target.options.htmlID}`)
     ?.scrollIntoView({ behavior: "smooth" });
 };
-
-const map = leaflet.map("map").setView({ lat: 40.72438, lng: -74.305332 }, 18);
 console.log(map);
 console.log(document.querySelector("#map"));
 leaflet
