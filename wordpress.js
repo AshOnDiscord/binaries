@@ -6,6 +6,7 @@ const hideMap = () => {
   mapElement.tabIndex = "-1"
   map.invalidateSize()
 };
+hideMap()
 const showMap = () => {
   // mapElement.style.display = "block";
   mapElement.style.opacity = "1";
@@ -182,5 +183,3 @@ window.addEventListener("resize", () => {
   updateScrollMargin();
 });
 updateScrollMargin()
-
-hideMap();
