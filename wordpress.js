@@ -2,10 +2,12 @@ const mapElement = document.createElement("div");
 const hideMap = () => {
   mapElement.style.display = "none";
   mapElement.style.opacity = "0";
+  map.invalidateSize()
 };
 const showMap = () => {
   mapElement.style.display = "block";
   mapElement.style.opacity = "1";
+  map.invalidateSize()
 };
 mapElement.id = "map";
 mapElement.style.width = "100vw";
