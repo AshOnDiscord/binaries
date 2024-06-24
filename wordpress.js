@@ -155,5 +155,6 @@ const updateScrollMargin = () => {
 }
 
 window.addEventListener("resize", updateScrollMargin);
+updateScrollMargin()
 
 hideMap();
