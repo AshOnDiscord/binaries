@@ -147,4 +147,11 @@ document.body.addEventListener("scroll", (e) => {
   }
 });
 
+window.addEventListener("resize", () => {
+  const height = window.innerHeight / 2 - document.querySelector(".NAVBAR").clientHeight;
+  document.querySelectorAll("[data-map-count]").forEach(e => {
+     e.style.scrollMarginTop = `${height}px`;
+  })
+})
+
 hideMap();
