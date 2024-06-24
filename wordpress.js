@@ -67,10 +67,12 @@ document.querySelectorAll("[data-map-count]").forEach((element) => {
   marker.addEventListener("click", markerClick);
 });
 
+let currentMarker = "";
+
 document.body.addEventListener("scroll", (e) => {
   const mapHeight = document.querySelector("#map").clientHeight;
 
-  const percentages = [...document.querySelectorAll(".markerBox")].map(
+  const percentages = [...document.querySelectorAll("[data-map-count]")].map(
     (element) => {
       // get how much the element is visible in the viewport, remember the map covers the top 50vh
       const rect = element.getBoundingClientRect();
