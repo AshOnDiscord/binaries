@@ -24,7 +24,8 @@ const showMap = () => {
 };
 const updateMapVisibility = () => {
   const preBottom = document.getElementById("preSpots").getBoundingClientRect().bottom;
-  if (preBottom < 0) {
+  const last = document.querySelector("[data-map-last]").getBoundingClientRect().top
+  if (preBottom < 0 && last > window.innerHeight/2) {
     showMap()
   } else {
     hideMap()
