@@ -4,7 +4,7 @@ const hideMap = () => {
   mapElement.style.opacity = "0";
   mapElement.style.pointerEvents = "none";
   mapElement.tabIndex = "-1"
-  map.invalidateSize()
+  map?.invalidateSize()
 };
 hideMap()
 const showMap = () => {
@@ -12,7 +12,7 @@ const showMap = () => {
   mapElement.style.opacity = "1";
   mapElement.style.pointerEvents = "";
   mapElement.tabIndex = ""
-  map.invalidateSize()
+  map?.invalidateSize()
 };
 mapElement.id = "map";
 mapElement.style.width = "100vw";
