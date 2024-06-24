@@ -1,12 +1,16 @@
 const mapElement = document.createElement("div");
 const hideMap = () => {
-  mapElement.style.display = "none";
+  // mapElement.style.display = "none";
   mapElement.style.opacity = "0";
+  mapElement.style.pointerEvents = "none";
+  mapElement.tabIndex = "-1"
   map.invalidateSize()
 };
 const showMap = () => {
-  mapElement.style.display = "block";
+  // mapElement.style.display = "block";
   mapElement.style.opacity = "1";
+  mapElement.style.pointerEvents = "";
+  mapElement.tabIndex = ""
   map.invalidateSize()
 };
 mapElement.id = "map";
